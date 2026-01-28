@@ -129,7 +129,6 @@ export default function Footer() {
                                 <option value="hi" className="bg-[#1a1a1a] text-white">हिंदी</option>
                             </select>
 
-
                         </div>
                     </div>
                 </div>
