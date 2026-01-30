@@ -8,7 +8,11 @@ import { useState, useEffect, useRef } from "react";
 
 export default function BrowseNavbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const searchRef = useRef<HTMLDivElement>(null);
+    const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -16,16 +20,34 @@ export default function BrowseNavbar() {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsDropdownOpen(false);
             }
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setIsSearchOpen(false);
+            }
         };
 
-        if (isDropdownOpen) {
+        if (isDropdownOpen || isSearchOpen) {
             document.addEventListener("mousedown", handleClickOutside);
         }
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [isDropdownOpen]);
+    }, [isDropdownOpen, isSearchOpen]);
+
+    // Focus search input when opened
+    useEffect(() => {
+        if (isSearchOpen && searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    }, [isSearchOpen]);
+
+    const handleSearchSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            console.log("Searching for:", searchQuery);
+            // TODO: Implement actual search functionality
+        }
+    };
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/90 to-transparent">
@@ -60,8 +82,8 @@ export default function BrowseNavbar() {
                     <Link href="/my-list" className="text-zinc-300 hover:text-white transition" style={{ verticalAlign: 'middle' }}>
                         My List
                     </Link>
-                    <Link href="/settings" className="text-zinc-300 hover:text-white transition" style={{ verticalAlign: 'middle' }}>
-                        Settings
+                    <Link href="/articles" className="text-zinc-300 hover:text-white transition" style={{ verticalAlign: 'middle' }}>
+                        Articles
                     </Link>
                     <Link href="/donations" className="text-zinc-300 hover:text-white transition" style={{ verticalAlign: 'middle' }}>
                         Donations
@@ -77,19 +99,71 @@ export default function BrowseNavbar() {
                         gap: '15px'
                     }}
                 >
-                    {/* Search Icon */}
-                    <button
-                        className="flex items-center justify-center text-white hover:text-zinc-300 transition"
-                        style={{
-                            width: '36px',
-                            height: '32px',
-                            gap: '10px',
-                            paddingTop: '2px',
-                            paddingBottom: '2px'
-                        }}
-                    >
-                        <Search className="w-5 h-5" />
-                    </button>
+                    {/* Search - Inline Expandable (Right to Left) */}
+                    <div ref={searchRef} className="relative flex items-center">
+                        {isSearchOpen ? (
+                            <form onSubmit={handleSearchSubmit} className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+                                <div
+                                    className="relative flex items-center rounded-sm overflow-hidden transition-all duration-300"
+                                    style={{
+                                        background: 'linear-gradient(135deg, rgba(255, 102, 0, 0.15) 0%, rgba(255, 46, 99, 0.15) 100%)',
+                                        border: '1px solid rgba(255, 102, 0, 0.5)',
+                                        width: '280px',
+                                        height: '32px'
+                                    }}
+                                >
+                                    {/* Search Icon */}
+                                    <div className="flex items-center justify-center pl-3">
+                                        <Search className="w-4 h-4 text-white" strokeWidth={2.5} />
+                                    </div>
+
+                                    {/* Search Input */}
+                                    <input
+                                        ref={searchInputRef}
+                                        type="text"
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        placeholder="Search Movies & Series"
+                                        className="flex-1 bg-transparent text-white px-3 py-1 outline-none placeholder:text-zinc-400"
+                                        style={{
+                                            fontFamily: 'SF Pro, system-ui, -apple-system, sans-serif',
+                                            fontSize: '14px',
+                                            fontWeight: 400
+                                        }}
+                                    />
+
+                                    {/* Close Button */}
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setIsSearchOpen(false);
+                                            setSearchQuery("");
+                                        }}
+                                        className="flex items-center justify-center pr-3 text-white hover:text-zinc-300 transition"
+                                    >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        ) : (
+                            <button
+                                onClick={() => setIsSearchOpen(true)}
+                                className="flex items-center justify-center text-white hover:text-zinc-300 transition"
+                                style={{
+                                    width: '36px',
+                                    height: '32px',
+                                    gap: '10px',
+                                    paddingTop: '2px',
+                                    paddingBottom: '2px'
+                                }}
+                            >
+                                <Search className="w-5 h-5" />
+                            </button>
+                        )}
+                    </div>
 
                     {/* Notification Bell */}
                     <button

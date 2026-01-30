@@ -14,6 +14,9 @@ export const ROUTES = {
     giftCards: "/gift-cards",
     privacy: "/privacy",
     termsOfUse: "/terms",
+    verify: "/verify",
+    setupProfile: "/setup-profile",
+    whoIsWatching: "/who-is-watching",
 };
 
 export const ASSETS = {
@@ -142,41 +145,41 @@ export const CATEGORIES = [
 ];
 
 export const CONTINUE_WATCHING = [
-    { id: "1", title: "PARAMPARA - Episode 3", thumbnail: "/images/movie1.png", progress: 65 },
-    { id: "2", title: "मंगल पुराण - Episode 5", thumbnail: "/images/Poster 2.png", progress: 30 },
-    { id: "3", title: "AADIPURAN - Episode 1", thumbnail: "/images/Poster 1.png", progress: 85 },
-    { id: "4", title: "कुण्डकुण्ड कथा - Episode 2", thumbnail: "/images/Poster 3.png", progress: 45 },
-    { id: "5", title: "JEEVAMPIKA - Episode 4", thumbnail: "/images/movie2.png", progress: 20 },
+    { id: "1", title: "PARAMPARA - Episode 3", thumbnail: "/images/movie1.png", progress: 65, categories: ["Spiritual", "Documentary", "Cultural"] },
+    { id: "2", title: "मंगल पुराण - Episode 5", thumbnail: "/images/Poster 2.png", progress: 30, categories: ["Spiritual", "Religious", "Educational"] },
+    { id: "3", title: "AADIPURAN - Episode 1", thumbnail: "/images/Poster 1.png", progress: 85, categories: ["Documentary", "Historical", "Spiritual"] },
+    { id: "4", title: "कुण्डकुण्ड कथा - Episode 2", thumbnail: "/images/Poster 3.png", progress: 45, categories: ["Biography", "Spiritual", "Inspirational"] },
+    { id: "5", title: "JEEVAMPIKA - Episode 4", thumbnail: "/images/movie2.png", progress: 20, categories: ["Drama", "Spiritual", "Family"] },
 ];
 
 export const NOW_ON_JINVANI = [
     // Recently added items first
-    { id: "1", title: "PARAMPARA", thumbnail: "/images/movie1.png", isRecentlyAdded: true },
-    { id: "2", title: "मंगल पुराण", thumbnail: "/images/Poster 1.png", isRecentlyAdded: true },
-    { id: "5", title: "कुण्डकुण्ड कथा", thumbnail: "/images/Poster 3.png", isRecentlyAdded: true },
+    { id: "1", title: "PARAMPARA", thumbnail: "/images/movie1.png", isRecentlyAdded: true, categories: ["Spiritual", "Documentary", "Cultural"] },
+    { id: "2", title: "मंगल पुराण", thumbnail: "/images/Poster 1.png", isRecentlyAdded: true, categories: ["Spiritual", "Religious", "Educational"] },
+    { id: "5", title: "कुण्डकुण्ड कथा", thumbnail: "/images/Poster 3.png", isRecentlyAdded: true, categories: ["Biography", "Spiritual", "Inspirational"] },
     // Regular items
-    { id: "3", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png" },
-    { id: "4", title: "जीना जी", thumbnail: "/images/Poster 2.png" },
-    { id: "6", title: "PARAMPARA", thumbnail: "/images/movie1.png" },
+    { id: "3", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png", categories: ["Drama", "Spiritual", "Family"] },
+    { id: "4", title: "जीना जी", thumbnail: "/images/Poster 2.png", categories: ["Family", "Devotional", "Spiritual"] },
+    { id: "6", title: "PARAMPARA", thumbnail: "/images/movie1.png", categories: ["Spiritual", "Documentary", "Cultural"] },
 ];
 
 export const TOP_10_JINVANI = [
-    { id: "1", title: "कुण्डकुण्ड कथा", thumbnail: "/images/Poster 3.png", rank: 1 },
-    { id: "2", title: "कुण्डकुण्ड कथा", thumbnail: "/images/movie1.png", rank: 2 },
-    { id: "3", title: "मंगल पुराण", thumbnail: "/images/movie2.png", rank: 3 },
-    { id: "4", title: "Swaminarayan", thumbnail: "/images/Poster 1.png", rank: 4 },
-    { id: "5", title: "Swaminarayan", thumbnail: "/images/Poster 2.png", rank: 5 },
-    { id: "6", title: "Swaminarayan", thumbnail: "/images/Poster 3.png", rank: 6 },
-    { id: "7", title: "PARAMPARA", thumbnail: "/images/movie1.png", rank: 7 },
-    { id: "8", title: "जीना जी", thumbnail: "/images/Poster 1.png", rank: 8 },
-    { id: "9", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png", rank: 9 },
-    { id: "10", title: "आदि पुराण", thumbnail: "/images/Poster 2.png", rank: 10 },
+    { id: "1", title: "कुण्डकुण्ड कथा", thumbnail: "/images/Poster 3.png", rank: 1, categories: ["Biography", "Spiritual", "Inspirational"] },
+    { id: "2", title: "कुण्डकुण्ड कथा", thumbnail: "/images/movie1.png", rank: 2, categories: ["Biography", "Spiritual", "Inspirational"] },
+    { id: "3", title: "मंगल पुराण", thumbnail: "/images/movie2.png", rank: 3, categories: ["Spiritual", "Religious", "Educational"] },
+    { id: "4", title: "Swaminarayan", thumbnail: "/images/Poster 1.png", rank: 4, categories: ["Biography", "Devotional", "Historical"] },
+    { id: "5", title: "Swaminarayan", thumbnail: "/images/Poster 2.png", rank: 5, categories: ["Biography", "Devotional", "Historical"] },
+    { id: "6", title: "Swaminarayan", thumbnail: "/images/Poster 3.png", rank: 6, categories: ["Biography", "Devotional", "Historical"] },
+    { id: "7", title: "PARAMPARA", thumbnail: "/images/movie1.png", rank: 7, categories: ["Spiritual", "Documentary", "Cultural"] },
+    { id: "8", title: "जीना जी", thumbnail: "/images/Poster 1.png", rank: 8, categories: ["Family", "Devotional", "Spiritual"] },
+    { id: "9", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png", rank: 9, categories: ["Drama", "Spiritual", "Family"] },
+    { id: "10", title: "आदि पुराण", thumbnail: "/images/Poster 2.png", rank: 10, categories: ["Documentary", "Historical", "Spiritual"] },
 ];
 
 export const POPULAR_DOCUMENTARY = [
-    { id: "1", title: "AADIPURAN", thumbnail: "/images/movie1.png" },
-    { id: "2", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png" },
-    { id: "3", title: "Documentary", thumbnail: "/images/Poster 1.png" },
-    { id: "4", title: "JEEVAMPIKA", thumbnail: "/images/Poster 2.png" },
-    { id: "5", title: "AADIPURAN", thumbnail: "/images/Poster 3.png" },
+    { id: "1", title: "AADIPURAN", thumbnail: "/images/movie1.png", categories: ["Documentary", "Historical", "Spiritual"] },
+    { id: "2", title: "JEEVAMPIKA", thumbnail: "/images/movie2.png", categories: ["Drama", "Spiritual", "Family"] },
+    { id: "3", title: "Documentary", thumbnail: "/images/Poster 1.png", categories: ["Documentary", "Educational", "Cultural"] },
+    { id: "4", title: "JEEVAMPIKA", thumbnail: "/images/Poster 2.png", categories: ["Drama", "Spiritual", "Family"] },
+    { id: "5", title: "AADIPURAN", thumbnail: "/images/Poster 3.png", categories: ["Documentary", "Historical", "Spiritual"] },
 ];
